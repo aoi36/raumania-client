@@ -4,6 +4,67 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type AdminDocumentDataSlicesSlice = AdminSlice;
+
+/**
+ * Content for admin documents
+ */
+interface AdminDocumentData {
+  /**
+   * Slice Zone field in *admin*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: admin.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<AdminDocumentDataSlicesSlice> /**
+   * Meta Title field in *admin*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: admin.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *admin*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: admin.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *admin*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: admin.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * admin document from Prismic
+ *
+ * - **API ID**: `admin`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AdminDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<AdminDocumentData>, "admin", Lang>;
+
 type HomepageDocumentDataSlicesSlice = HeroSlice;
 
 /**
@@ -69,7 +130,49 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomepageDocument;
+export type AllDocumentTypes = AdminDocument | HomepageDocument;
+
+/**
+ * Primary content in *Admin → Default → Primary*
+ */
+export interface AdminSliceDefaultPrimary {
+  /**
+   * Heading field in *Admin → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: admin.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Admin Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AdminSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AdminSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Admin*
+ */
+type AdminSliceVariation = AdminSliceDefault;
+
+/**
+ * Admin Shared Slice
+ *
+ * - **API ID**: `admin`
+ * - **Description**: Admin
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AdminSlice = prismic.SharedSlice<"admin", AdminSliceVariation>;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -154,10 +257,17 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AdminDocument,
+      AdminDocumentData,
+      AdminDocumentDataSlicesSlice,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      AdminSlice,
+      AdminSliceDefaultPrimary,
+      AdminSliceVariation,
+      AdminSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,

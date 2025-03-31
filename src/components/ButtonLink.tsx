@@ -1,3 +1,4 @@
+import { FaCartShopping, FaPlus } from "react-icons/fa6";
 import { PrismicNextLink, PrismicNextLinkProps } from "@prismicio/next";
 import clsx from "clsx";
 
@@ -41,6 +42,8 @@ export function ButtonLink({
               size === "lg" && "~size-6/8",
             )}
           >
+            {icon == "cart"&&<FaCartShopping/>}
+            {icon === "plus" && <FaPlus />}
 
           </div>
           <div className="w-px self-stretch bg-black/25" />

@@ -2,16 +2,22 @@
 import fluid, { extract, screens, fontSize } from 'fluid-tailwind'
 
 module.exports = {
-  content: {files:[
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-
-  ], extract
- 
-},
+  content: {
+    files:[
+      './src/**/*.{js,ts,jsx,tsx,mdx}',
+    ], 
+    extract
+  },
   theme: {
     screens,
     fontSize,
     extend: {
+      fontFamily: {
+        'cormorant': ['var(--font-cormorant-garamond)'],
+        'dancing': ['var(--font-dancing-script)'],
+        sans: ['var(--font-cormorant-garamond)'],
+        mono: ['var(--font-dancing-script)'],
+      },
       colors: {
         "brand-blue": "#4876ff",
         "brand-lime": "#d9f154",
@@ -24,7 +30,6 @@ module.exports = {
     },
   },
   plugins: [
- 
     fluid
   ],
 }

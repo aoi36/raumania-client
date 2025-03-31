@@ -4,6 +4,7 @@ import { PrismicRichText, PrismicText, SliceComponentProps } from "@prismicio/re
 import { PrismicNextLink } from "@prismicio/next";
 import { Bounded } from "@/components/Bounded";
 import { Heading } from "@/components/Heading";
+import { ButtonLink } from "@/components/ButtonLink";
 
 /**
  * Props for `Hero`.
@@ -20,20 +21,28 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className = "bg-brand-gray relative h-dvh overflow-hidden text-zinc-800 bg-texture"
     >
-      <Heading>
-    
-          <PrismicText field={slice.primary.heading} />      
-     
-        </Heading>
-        <div className="mt-4 [&_p]:text-gray-700">
-          <PrismicRichText field={slice.primary.body} />   
-        </div>
-        <div className="mt-40">
-          <PrismicNextLink 
+      <div className="absolute inset-0 mx-auto mt-24 grid max-w-6xl grid-rows-[1fr,auto] place-items-end px-6 ~py-10/16">
+
+        <Heading className="relative max-w-2xl place-self-start">
+      
+            <PrismicText field={slice.primary.heading} />      
+      
+          </Heading>
+          <div className="flex relative w-full flex-col items-center justify-between ~gap-2/4 lg:flex-row">
+          <div className="max-w-[45ch] ~text-lg/xl">
+            <PrismicRichText field={slice.primary.body} />   
+          </div>
+          <ButtonLink  
             field={slice.primary.button} 
-            className="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors" 
-          />
-        </div>
+            icon="cart"
+            size="lg"
+            className="z-20 mt-2 block"
+              
+            >
+            {slice.primary.button.text}
+              </ButtonLink>
+          </div>
+      </div>
    
     </Bounded>
   );
