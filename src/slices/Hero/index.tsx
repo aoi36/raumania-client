@@ -34,7 +34,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
           </div>
           <ButtonLink  
             field={slice.primary.button} 
-            icon="cart"
+            icon="GiDelicatePerfume"
             size="lg"
             className="z-20 mt-2 block"
               

@@ -3,7 +3,7 @@ import React from "react";
 import { ButtonLink } from "./ButtonLink";
 import { Logo } from "./Logo";
 import { createClient } from "@/prismicio";
-import { PrismicNextLink } from "@prismicio/next";
+
 
 export async function Header() {
   const client = createClient();
@@ -20,6 +20,7 @@ export async function Header() {
           className="col-span-full row-start-2 md:col-span-1 md:col-start-2 md:row-start-1"
         >
           <ul className="flex flex-wrap items-center justify-center gap-8">
+            <li> board </li>
            
           </ul>
         </nav>
