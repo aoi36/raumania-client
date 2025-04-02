@@ -137,14 +137,14 @@ export type AllDocumentTypes = AdminDocument | HomepageDocument;
  */
 export interface AdminSliceDefaultPrimary {
   /**
-   * Heading field in *Admin → Default → Primary*
+   * Body field in *Admin → Default → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: admin.default.primary.heading
+   * - **API ID Path**: admin.default.primary.body
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  heading: prismic.RichTextField;
+  body: prismic.RichTextField;
 }
 
 /**

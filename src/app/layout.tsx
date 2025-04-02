@@ -33,7 +33,6 @@ export default function RootLayout({
         className={`${cormorant_garamond.variable} ${dancing_script.variable} antialiased font-mono font-medium text-zinc-400`}
       >
         <main>
-        <Header/>  
         {children}
         </main>
         <SVGFilters  />

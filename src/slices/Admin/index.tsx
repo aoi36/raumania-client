@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
 /**
  * Props for `Admin`.
@@ -16,7 +16,7 @@ const Admin: FC<AdminProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for admin (variation: {slice.variation}) Slices
+     <PrismicRichText field={slice.primary.body} />
     </section>
   );
 };
