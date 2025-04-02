@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import "./globals.css";
 import {Cormorant_Garamond, Dancing_Script } from "next/font/google";
+import { SVGFilters } from "@/components/SVGFilters";
 
 const cormorant_garamond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -35,7 +36,7 @@ export default function RootLayout({
         <Header/>  
         {children}
         </main>
-      
+        <SVGFilters  />
       </body>
     </html>
   );
