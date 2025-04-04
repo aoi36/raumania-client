@@ -2,7 +2,8 @@
 import fluid, { extract, screens, fontSize } from 'fluid-tailwind'
 
 module.exports = {
-  content: {
+    darkMode: ['class'],
+    content: {
     files:[
       './src/**/*.{js,ts,jsx,tsx,mdx}',
     ], 
@@ -43,6 +44,7 @@ module.exports = {
     },
   },
   plugins: [
-    fluid
-  ],
+    fluid,
+      require("tailwindcss-animate")
+],
 }
