@@ -21,6 +21,10 @@ module.exports = {
         mono: ['var(--font-dancing-script)'],
       },
       colors: {
+        border: 'hsl(var(--border))', 
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        
         "brand-blue": "#4876ff",
         "brand-lime": "#d9f154",
         "brand-navy": "#2e3192",
