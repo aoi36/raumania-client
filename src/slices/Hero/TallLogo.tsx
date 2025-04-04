@@ -1,4 +1,5 @@
 import { SVGProps } from "react";
+import clsx from "clsx";
 
 export function TallLogo({ className, ...props }: SVGProps<SVGSVGElement>) {
   return (
@@ -8,8 +9,7 @@ export function TallLogo({ className, ...props }: SVGProps<SVGSVGElement>) {
         viewBox="0 0 367 422" 
         fill="currentColor" 
         xmlns="http://www.w3.org/2000/svg"
-        className={className}
-        style={{filter: "url('#squiggle-5')"}}
+        className={clsx(className, "animate-squiggle")}
         {...props}
         >
   

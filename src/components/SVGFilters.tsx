@@ -5,7 +5,7 @@ export function SVGFilters() {
           {Array.from({ length: 5 }).map((_, index) => (
             <filter id={`squiggle-${index}`} key={index}>
               <feTurbulence
-                baseFrequency="0.9"
+                baseFrequency="0.05"
                 id="turbulence"
                 numOctaves="2"
                 result="noise"
